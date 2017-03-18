@@ -34,6 +34,9 @@ app.get('/auth', (req, res) => {
                 res.end(body);
         });
 });
+app.get('/clientid', (req, res) => {
+    res.send("" + config.client_id);
+})
 app.listen(8080, () => {
     console.log('listening 8080 port');
 })
