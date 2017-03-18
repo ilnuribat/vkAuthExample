@@ -19,7 +19,14 @@ app.use((req, res, next) => {
 });
 app.get('/auth', (req, res) => {
     const code = url.parse(req.url, true).query.code;
-    request.get(`https://oauth.vk.com/access_token?client_id=${client_id}&client_secret=${client_secret}&redirect_uri=http://localhost:8080/auth&scope=offline&code=${code}`, 
+    const URL = "https://oauth.vk.com/access_token" +
+                    `?client_id=${client_id}` +
+                    `&client_secret=${client_secret}` +
+                    `&redirect_uri=http://localhost:8080/auth` +
+                    `&scope=offline` +
+                    `&code=${code}`;
+    console.log(URL);
+    request.get(URL, 
         (err, response, body) => {
             if (err)
                 res.send(err);
