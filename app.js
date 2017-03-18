@@ -13,7 +13,7 @@ app.use('/', express.static('public'));
 app.use((req, res, next) => {
     console.log(req.url);
     next();
-})
+});
 app.get('/auth', (req, res) => {
     const code = url.parse(req.url, true).query.code;
     request.get(`https://oauth.vk.com/access_token
