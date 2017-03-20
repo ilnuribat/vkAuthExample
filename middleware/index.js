@@ -5,7 +5,7 @@ module.exports = (server, express) => {
     server.use(bodyParser.urlencoded({ extended: true }));
     server.set('json spaces', 4);
     server.use((req, res, next) => {
-        console.log(req.url);
+        console.log(req.method, req.url);
         next();
     });
 }
