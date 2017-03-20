@@ -1,6 +1,6 @@
 window.onload = () => {
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', '/authurl');
+    xhr.open('GET', '/auth');
     xhr.onload = () => {
         let href = document.getElementById('href');
         const answer = JSON.parse(xhr.response);
