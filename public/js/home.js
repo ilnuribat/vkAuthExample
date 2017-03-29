@@ -1,33 +1,38 @@
+let methodName;
+let methodBody;
+
+window.onload = () => {
+    methodName = document.getElementById('methodName');
+    methodBody = document.getElementById('methodBody');
+}
+
 function getLikes() {
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET', `/api/likes`);
-    xhr.onload = () => {
-        let methodName = document.getElementById('methodName');
-        methodName.innerText = 'Getting likes';
-        let methodBody = document.getElementById('methodBody');
-        methodBody.innerText = xhr.response;
-    }
-    xhr.send();
+    methodName.innerText = 'Getting likes';
+    request('likes', {})
+        .then((result) => {
+            methodBody.innerText = result;
+        })
+        .catch((err) => {
+            methodBody.innerHTML = err;
+        });
 }
 function getWallPosts() {
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET', `/api/wallposts`);
-    xhr.onload = () => {
-        let methodName = document.getElementById('methodName');
-        methodName.innerText = 'Getting wall posts';
-        let methodBody = document.getElementById('methodBody');
-        methodBody.innerText = xhr.response;
-    }
-    xhr.send();
+    methodName.innerText = 'Getting wall posts';
+    request('wallposts', {})
+        .then((result) => {
+            methodBody.innerText = result;
+        })
+        .catch((err) => {
+            methodBody.innerHTML = err;
+        });
 }
 function getViewsCounter() {
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET', `/api/viewsCounter`);
-    xhr.onload = () => {
-        let methodName = document.getElementById('methodName');
-        methodName.innerText = 'Getting wall stats';
-        let methodBody = document.getElementById('methodBody');
-        methodBody.innerText = xhr.response;
-    }
-    xhr.send();
+    methodName.innerText = 'Getting wall stats';
+    request('viewsCounter')
+        .then(result => {
+            methodBody.innerHTML = result;
+        })
+        .catch(err => {
+            methodBody.innerHTML = err;
+        });
 }
