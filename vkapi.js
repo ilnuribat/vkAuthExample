@@ -14,6 +14,6 @@ module.exports = (method, options) =>
             if (error)
                 reject(error);
             else 
-                resolve(body);
+                resolve(JSON.parse(body));
         });
     });
