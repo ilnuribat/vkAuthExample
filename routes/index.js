@@ -17,6 +17,9 @@ router.get('/login', (req, res) => {
 router.get('/home', (req, res) => {
     res.render('home');
 });
+router.get('/repost', (req, res) => {
+    res.render('repost');
+});
 
 
 module.exports = router;
