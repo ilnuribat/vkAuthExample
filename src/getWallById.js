@@ -1,5 +1,5 @@
 const sql = require('./../sql');
-const vkapi = require('./vkapi');
+const vkapi = require('./../vkapi');
 
 module.exports = (wallId, postId) =>
     new Promise((resolve, reject) => {
