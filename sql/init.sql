@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS wallposts;
+# DROP TABLE IF EXISTS wallposts;
 CREATE TABLE wallposts (
-    id SERIAL PRIMARY KEY,
+    id INTEGER PRIMARY KEY,
     wallId INT NOT NULL,
     postId INT NOT NULL,
     status TEXT,
