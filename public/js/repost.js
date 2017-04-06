@@ -5,7 +5,7 @@ let linkToPost;
 window.onload = () => {
     linkToPost = document.getElementById('linkToPost');
     linkToPost.onchange = () => {
-        const extract = extractGroup_IdPost_Id(linkToPost.value);
+        const extract = extractWall_IdPost_Id(linkToPost.value);
 
         wallId = document.getElementById('wallId');
         wallId.innerText = extract.wallId;
@@ -13,11 +13,11 @@ window.onload = () => {
         postId = document.getElementById('postId');
         postId.innerText = extract.postId;
     }
-    const getReposts = document.getElementById('getReposts');
-    getReposts.onclick = APIgetReposts;
+    const addWallpost = document.getElementById('addWallpost');
+    addWallpost.onclick = APIgetReposts;
 }
 
-function extractGroup_IdPost_Id(linkToPost) {
+function extractWall_IdPost_Id(linkToPost) {
     let splitted = linkToPost.split('wall');
     if (splitted[0] !== 'https://vk.com/')
         return {
@@ -29,6 +29,9 @@ function extractGroup_IdPost_Id(linkToPost) {
         wallId: ids[0],
         postId: ids[1]
     }
+}
+
+function APIaddWallPost() {
 }
 
 function APIgetReposts() {
