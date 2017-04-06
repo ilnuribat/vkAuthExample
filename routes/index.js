@@ -3,10 +3,10 @@ const router = express.Router();
 const url = require('url');
 
 const auth = require('./auth');
-const addWallPost = require('./../src/addWallPost');
+const postWallPost = require('./postWallPost');
 
 router.get('/auth', auth);
-router.post('/api/wallpost', );
+router.post('/api/wallpost', postWallPost);
 
 router.get('/login', (req, res) => {
     res.render('login');
