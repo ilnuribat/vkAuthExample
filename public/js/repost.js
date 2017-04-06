@@ -14,7 +14,7 @@ window.onload = () => {
         postId.innerText = extract.postId;
     }
     const addWallpost = document.getElementById('addWallpost');
-    addWallpost.onclick = APIgetReposts;
+    addWallpost.onclick = APIaddWallPost;
 }
 
 function extractWall_IdPost_Id(linkToPost) {
@@ -32,10 +32,7 @@ function extractWall_IdPost_Id(linkToPost) {
 }
 
 function APIaddWallPost() {
-}
-
-function APIgetReposts() {
-    request('getReposts', {wallId: wallId.innerText, postId: postId.innerText})
+    request('wallpost', {wallId: wallId.innerText,  postId: postId.innerText}, 'POST')
         .then(result => {
             console.log(result);
         })
