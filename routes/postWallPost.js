@@ -1,5 +1,6 @@
 const getWallById = require('./../src/getWallById');
 const addWallPost = require('./../src/addWallPost');
+const createRepostsList = require('./../src/tasks/createRepostsList');
 const assert = require('chai').assert;
 
 //body: {wallId: 1234, postId: 1234}
@@ -17,14 +18,19 @@ module.exports = (req, res) => {
         return;
     }
     getWallById(req.body.wallId, req.body.postId)
-        .then(res => {
-            let wallInfo = res.response[0];
+        .then(result => {
+            let wallInfo = result.response[0];
             return addWallPost(req.body.wallId, req.body.postId, wallInfo.reposts.count);
         })
+        .then(result => createRepostsList(result))
         .then(result => {
-            res.json({'message': 'ok'});
+            res.json({'message': 'wallpost added to database'});
         })
         .catch(err => {
+            if (err.routine === "_bt_check_unique") {
+                res.json({'message': 'This post is already added'});
+                return;
+            }
             res.json(err);
         })
 }
