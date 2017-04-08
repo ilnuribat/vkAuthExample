@@ -4,7 +4,7 @@ let linkToPost;
 
 window.onload = () => {
     linkToPost = document.getElementById('linkToPost');
-    linkToPost.onchange = () => {
+    linkToPost.oninput = () => {
         const extract = extractWall_IdPost_Id(linkToPost.value);
 
         wallId = document.getElementById('wallId');
