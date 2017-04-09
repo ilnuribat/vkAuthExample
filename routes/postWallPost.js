@@ -1,6 +1,6 @@
 const getWallById = require('./../src/getWallById');
 const addWallPost = require('./../src/addWallPost');
-const createRepostsList = require('./../src/tasks/createRepostsList');
+const createRepostsList = require('./../src/createRepostsList');
 const assert = require('chai').assert;
 
 //body: {wallId: 1234, postId: 1234}
@@ -19,7 +19,7 @@ module.exports = (req, res) => {
     }
     getWallById(req.body.wallId, req.body.postId)
         .then(result => {
-            let wallInfo = result.response[0];
+            let wallInfo = result[0];
             return addWallPost(req.body.wallId, req.body.postId, wallInfo.reposts.count);
         })
         .then(result => createRepostsList(result))

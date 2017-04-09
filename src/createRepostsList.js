@@ -1,4 +1,4 @@
-var sql = require('./../../sql');
+var sql = require('./../sql');
 const method = 'wall.getReposts';
 
 module.exports = ({wallId, postId, repostCount}) => {
