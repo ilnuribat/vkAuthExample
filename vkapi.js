@@ -11,9 +11,14 @@ module.exports = (method, options) =>
         const URI = `${URL}/${method}?${access_token}${params}`;
         console.log(URI);
         request.get(URI, (error, response, body) => {
-            if (error)
+            if (error) {
                 reject(error);
+                return;
+            }
+            const jsonBody = JSON.parse(body);
+            if (jsonBody.error)
+                reject(jsonBody.error);
             else 
-                resolve(JSON.parse(body));
+                resolve(jsonBody.response);
         });
     });
