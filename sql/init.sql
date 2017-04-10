@@ -12,7 +12,6 @@ CREATE TABLE tasks (
     id SERIAL PRIMARY KEY,
     method TEXT NOT NULL,
     params TEXT NOT NULL,
-    offset_ INT NOT NULL,
     status INT NOT NULL,
     result JSON,
     UNIQUE (method, params)
