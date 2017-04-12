@@ -9,6 +9,6 @@ middleware(app, express);
 app.use(routes);
 
 
-app.listen(8080, () => {
+app.listen(process.env.VK_APP_PORT || 8080, () => {
     console.log('listening 8080 port');
 });
