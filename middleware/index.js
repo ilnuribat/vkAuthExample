@@ -13,7 +13,7 @@ module.exports = (server, express) => {
         next();
     });
 
-    const httpPort = process.env.VK_APP_PORT ? process.env.VK_APP_PORT : 8080;
+    const httpPort = process.env.VK_APP_PORT ? process.env.VK_APP_PORT : 80;
     server.listen(httpPort, () => {
         console.log(`listening ${httpPort} port`);
     });
